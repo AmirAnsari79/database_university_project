@@ -1,5 +1,7 @@
 from flask import Flask, render_template
 from models import Model, get_db_connection
+import create_model_views as create_table_views
+import insert_views
 
 app = Flask(__name__)
 
@@ -9,35 +11,10 @@ def hello_world():  # put application's code here
     return 'Hello World!'
 
 
-@app.route('/createdb')
-def create_db():
-    get_db_connection()
-    return 'database is create'
-
-
-@app.route('/create_table')
-def create_table():
-    Model.create_customer()
-    Model.create_carrier()
-    Model.create_employee()
-    Model.create_invoice()
-    Model.create_manager()
-    Model.create_offering()
-    Model.create_operator()
-    Model.create_packagingManager()
-    Model.create_service()
-    Model.create_service_type()
-    return 'crate_table'
-
-
-@app.route('/insert_customer')
-def insert_customer():
-    if True:
-        return render_template('insert_customer.html')
-
-
-
-
+app.add_url_rule('/createdb', view_func=create_table_views.create_db)
+app.add_url_rule('/createtables', view_func=create_table_views.create_table)
+app.add_url_rule('/customerviews/',methods=['POST','GET'], view_func=insert_views.customer_view)
+app.add_url_rule('/insertcustomer/',methods=['POST','GET'], view_func=insert_views.get_insert_customer)
 
 if __name__ == '__main__':
     app.run()
