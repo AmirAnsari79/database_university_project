@@ -32,7 +32,8 @@ def create_table():
 
 @app.route('/insert_customer')
 def insert_customer():
-    return render_template('insert_customer.html')
+    if True:
+        return render_template('insert_customer.html')
 
 
 if __name__ == '__main__':
