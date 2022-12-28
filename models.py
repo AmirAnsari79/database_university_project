@@ -22,13 +22,13 @@ class Model:
             cls.cur.execute("""
                 create table customer 
             (
-            CID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            CID INTEGER PRIMARY KEY  NOT NULL,
             full_name CHAR(30) NOT NULL ,
             phone_number CHAR(11) NOT NULL UNIQUE 
             );
             
             """)
-            cls.cur.close()
+            # cls.cur.close()
         except:
             print(f'customer model is already exists')
 
@@ -56,6 +56,8 @@ class Model:
                 
             );
             """)
+            # cls.cur.close()
+
         except:
             print('invoice model is already exists')
 
@@ -84,6 +86,8 @@ class Model:
                 );
             
             """)
+            # cls.cur.close()
+
         except:
             print('offering model is already exists')
 
@@ -99,6 +103,8 @@ class Model:
             salary DECIMAL(9) NOT NULL
             );
             """)
+            # cls.cur.close()
+
         except:
             print(f'employee model is already exists')
 
@@ -138,6 +144,8 @@ class Model:
                 );
                 
             """)
+            # cls.cur.close()
+
         except:
             print('operator model is already exists')
 
@@ -156,6 +164,8 @@ class Model:
                     ON UPDATE NO ACTION 
                         );
             """)
+            # cls.cur.close()
+
         except:
             print('packagingManager is already exists ')
 
@@ -178,6 +188,8 @@ class Model:
             );
             
             """)
+            # cls.cur.close()
+
         except:
             print('manager model is already exists')
 
@@ -202,6 +214,8 @@ class Model:
                 
                 );
             """)
+            # cls.cur.close()
+
         except:
             print('service model is already exists ')
 
@@ -214,11 +228,13 @@ class Model:
                 pishtaz CHAR(1) NOT NULL UNIQUE ,
                 two_q   CHAR(1) NOT NULL UNIQUE ,
                 havai CHAR(1) NOT NULL UNIQUE ,
-                mamoli CHAR(1) NOT NULL UNIQUE 
+                mamoli CHAR(1) NOT NULL UNIQUE
                 
                 
                 );
             
             """)
+            cls.cur.close()
+
         except:
             print('service type model is already exists')

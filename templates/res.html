@@ -9,8 +9,14 @@
 </head>
 <body>
 
+{#{% with messages=get_flashed_messages() %}#}
+{#    {% if messages %}#}
+{#    {% for foo in  messages %}#}
+{#        {{ foo }}#}
+{#    {% endfor %}#}
+{#    {% else %}#}
+    <h1>{{ msg }}</h1>
 
-<h1>{{ msg }}</h1>
-
+{#{% endwith %}#}
 </body>
 </html>

@@ -5,22 +5,14 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>customer</title>
+    <title>carrier info</title>
 </head>
 <body>
+<form action="{{ url_for('get_insert_carrier') }}" method="post">
+    license number <br>
+    <input type="text" name="lnumber">
 
-
-<form action="{{ url_for('get_insert_customer') }}" method="POST">
-    <h3>Customer Information</h3>
-    Name<br>
-    <input type="text" name="name"/></br>
-
-    PhoneNumber<br>
-    <input type="tel" name="phone"><br>
-
-
-    <input type="submit" value="submit"/><br>
+    <input type="submit" name="submit">
 </form>
-
 </body>
 </html>

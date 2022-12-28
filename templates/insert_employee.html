@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>employee insert</title>
+</head>
+<body>
+<form action="{{ url_for('get_insert_employee') }}" method="POST">
+    <h3>employee Information</h3>
+    Name <br>
+    <input type="text" name="name"><br>
+    Phonenumber <br>
+    <input type="tel" name="phone_number"><br>
+    salary <br>
+    <input type="number" name="salary"><br>
+    <input type="submit" value="submit"> <br>
+</form>
+</body>
+</html>
