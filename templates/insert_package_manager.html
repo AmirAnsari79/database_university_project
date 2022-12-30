@@ -5,14 +5,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>carrier info</title>
+    <title>package manager INFO</title>
 </head>
 <body>
-<form action="{{ url_for('get_insert_carrier') }}" method="post">
-    license number <br>
-    <input type="number" name="lnumber">
 
+<form action="{{ url_for('insert_packager_manager') }}" method="post">
+    <input type="number" name="PIND">
     <input type="submit" name="submit">
+
+
 </form>
+
 </body>
 </html>

@@ -5,14 +5,20 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>carrier info</title>
+    <title>manager Info</title>
 </head>
 <body>
-<form action="{{ url_for('get_insert_carrier') }}" method="post">
-    license number <br>
-    <input type="number" name="lnumber">
+<form action="{{ url_for('get_insert_manager') }}" method="post">
+    location <br> <br>
+    <textarea name="location"></textarea> <br>
+    history manager <br> <br>
+    <input type="text" name="history"> <br>
+
+    branch id <br>
+    <input type="tel" name="branch_id"> <br> <br>
 
     <input type="submit" name="submit">
+
 </form>
 </body>
 </html>

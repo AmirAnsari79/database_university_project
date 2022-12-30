@@ -115,7 +115,7 @@ class Model:
                 create table carrier
                 (
                 PCID INTEGER ,
-                license_number INTEGER NOT NULL UNIQUE,
+                license_number INT NOT NULL UNIQUE,
                 PRIMARY KEY (PCID),
                 FOREIGN KEY (PCID)
                     REFERENCES employee (PID) 
@@ -135,6 +135,7 @@ class Model:
                 POID INTEGER,
                 hour_work SMALLINT NOT NULL ,
                 pass CHAR(14) NOT NULL, 
+                operator_id INT NOT NULL UNIQUE, 
                 PRIMARY KEY (POID),
                 FOREIGN KEY (POID)
                  REFERENCES employee (PID)             
@@ -156,7 +157,7 @@ class Model:
             create table package_manager
             (
                 PAID INTEGER ,
-                package_in_day SMALLINT,
+                package_in_day INT,
                 PRIMARY KEY (PAID),
                 FOREIGN KEY (PAID) 
                     REFERENCES employee(PID)
