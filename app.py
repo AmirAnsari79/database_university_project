@@ -1,7 +1,8 @@
 from flask import Flask, render_template
 from models import Model, get_db_connection
 import create_model_views as create_table_views
-from view import customreView, carrierView, managerView, employeeView, package_managerView, operator_view
+from view import customreView, carrierView, managerView, employeeView, package_managerView, operator_view, serviceView, \
+    invoiceView
 
 app = Flask(__name__)
 app.secret_key = 'abc'
@@ -34,9 +35,14 @@ app.add_url_rule('/insert_package_manager', methods=['POST', 'GET'],
                  view_func=package_managerView.insert_packager_manager)
 
 # operator view
-
 app.add_url_rule('/operator', view_func=operator_view.operator_view)
 app.add_url_rule('/insert_operator', methods=['POST', 'GET'], view_func=operator_view.insert_operator)
 
+# service view
+app.add_url_rule('/service', view_func=serviceView.service_view)
+app.add_url_rule('/insert_service', view_func=serviceView.insert_service, methods=['POST', 'GET'])
+# invoice
+app.add_url_rule('/invoice', view_func=invoiceView.invoice_view)
+app.add_url_rule('/insert_invoice', view_func=invoiceView.insert_invoice, methods=['POST', 'GET'])
 if __name__ == '__main__':
     app.run()

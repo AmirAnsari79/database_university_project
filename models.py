@@ -38,10 +38,10 @@ class Model:
             cls.cur.execute("""
                  create table invoice 
             (
-            ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
             _date Datetime NOT NULL ,
             amount Decimal(9) NOT NULL,
             addr TEXT NOT NULL,
+            ID  INTEGER NOT NULL ,
             CID INTEGER NOT NULL,
             POID INTEGER NOT NULL ,
             service_type TEXT NOT NULL ,
@@ -52,14 +52,16 @@ class Model:
             FOREIGN KEY (POID)
                 REFERENCES operator(POID)
                 ON DELETE CASCADE 
-                ON UPDATE CASCADE
+                ON UPDATE CASCADE,
+            PRIMARY KEY (ID,CID,POID)
+            
                 
             );
             """)
             # cls.cur.close()
 
-        except:
-            print('invoice model is already exists')
+        except Exception as e:
+            print(e)
 
     @classmethod
     def create_offering(cls):
@@ -132,10 +134,10 @@ class Model:
             cls.cur.execute("""
                 create table operator
                 (
-                POID INTEGER,
                 hour_work SMALLINT NOT NULL ,
                 pass CHAR(14) NOT NULL, 
                 operator_id INT NOT NULL UNIQUE, 
+                POID INTEGER,
                 PRIMARY KEY (POID),
                 FOREIGN KEY (POID)
                  REFERENCES employee (PID)             
@@ -200,42 +202,36 @@ class Model:
             cls.cur.execute("""
                 create table service
                 (
-                SHIPMENT_ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ,
-                service_type TEXT NOT NULL ,
-                POID INTEGER NOT NULL ,
-                FOREIGN KEY (POID)
+                SHIPMENT_ID INTEGER PRIMARY KEY,
+                service_type INTEGER NOT NULL,
+                FOREIGN KEY (SHIPMENT_ID)
                     REFERENCES operator(POID)
-                    ON DELETE NO ACTION 
-                    ON UPDATE CASCADE ,
-                FOREIGN KEY (service_type)
-                    REFERENCES service_type(pistaz)
-                    ON DELETE NO ACTION 
+                    ON DELETE CASCADE 
                     ON UPDATE CASCADE 
-                     
                 
                 );
-            """)
-            # cls.cur.close()
-
-        except:
-            print('service model is already exists ')
-
-    @classmethod
-    def create_service_type(cls):
-        try:
-            cls.cur.execute("""
-                create table service_type
-                (
-                pishtaz CHAR(1) NOT NULL UNIQUE ,
-                two_q   CHAR(1) NOT NULL UNIQUE ,
-                havai CHAR(1) NOT NULL UNIQUE ,
-                mamoli CHAR(1) NOT NULL UNIQUE
-                
-                
-                );
-            
             """)
             cls.cur.close()
 
         except:
-            print('service type model is already exists')
+            print('service model is already exists ')
+    #
+    # @classmethod
+    # def create_service_type(cls):
+    #     try:
+    #         cls.cur.execute("""
+    #             create table service_type
+    #             (
+    #             pishtaz CHAR(1) NOT NULL UNIQUE ,
+    #             two_q   CHAR(1) NOT NULL UNIQUE ,
+    #             havai CHAR(1) NOT NULL UNIQUE ,
+    #             mamoli CHAR(1) NOT NULL UNIQUE
+    #
+    #
+    #             );
+    #
+    #         """)
+    #         cls.cur.close()
+    #
+    #     except:
+    #         print('service type model is already exists')

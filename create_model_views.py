@@ -11,11 +11,11 @@ def create_table():
     Model.create_customer()
     Model.create_carrier()
     Model.create_employee()
+    Model.create_operator()
     Model.create_invoice()
     Model.create_manager()
     Model.create_offering()
-    Model.create_operator()
     Model.create_packagingManager()
     Model.create_service()
-    Model.create_service_type()
+    # Model.create_service_type()
     return 'crate_table'
