@@ -5,16 +5,22 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>carrier info</title>
+    <title></title>
 </head>
 <body>
-<form action="{{ url_for('insert_carrier') }}" method="post">
-    employee id <br>
-    <input type="text" name="PID" id=""> <br> <br>
-    license number <br>
-    <input type="number" name="lnumber">
+<table>
 
-    <input type="submit" name="submit">
-</form>
+        <tr>
+            <th>ID</th>
+        </tr>
+    {% for d in data %}
+        <tr>
+            <td>
+                {{ d['today'] }}
+                {{ d['ID'] }}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
 </body>
 </html>

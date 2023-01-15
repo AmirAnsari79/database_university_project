@@ -41,11 +41,10 @@ class Model:
             _date Datetime NOT NULL ,
             amount Decimal(9) NOT NULL,
             addr TEXT NOT NULL,
-            ID  INTEGER NOT NULL ,
+            ID  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ,
             CID INTEGER NOT NULL,
             POID INTEGER NOT NULL ,
             service_type TEXT NOT NULL ,
-            PRIMARY KEY (ID,CID,POID),
             FOREIGN KEY (CID) 
                 REFERENCES customer (CID)
                 ON DELETE CASCADE 

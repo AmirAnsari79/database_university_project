@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from models import Model, get_db_connection
 import create_model_views as create_table_views
 from view import customreView, carrierView, managerView, employeeView, package_managerView, operator_view, serviceView, \
-    invoiceView
+    invoiceView,selectView
 
 app = Flask(__name__)
 app.secret_key = 'abc'
@@ -24,8 +24,12 @@ app.add_url_rule('/insert_customer/', methods=['POST', 'GET'], view_func=customr
 app.add_url_rule('/employee', view_func=employeeView.employee_view)
 app.add_url_rule('/insert_employee', methods=['POST', 'GET'], view_func=employeeView.get_insert_employee)
 # carrier view
-app.add_url_rule('/carrier', view_func=carrierView.carrier_view)
-app.add_url_rule('/insert_carrier', methods=['POST', 'GET'], view_func=carrierView.get_insert_carrier)
+app.add_url_rule('/Icarrier', view_func=carrierView.insert_carrier_view)
+app.add_url_rule('/carrier', view_func=carrierView.delete_carrier_view)
+app.add_url_rule('/Ucarrier', view_func=carrierView.update_carrier_view)
+app.add_url_rule('/delete_carrier', methods=['POST', 'GET'], view_func=carrierView.delete_carrier)
+app.add_url_rule('/insert_carrier', methods=['POST', 'GET'], view_func=carrierView.insert_carrier)
+app.add_url_rule('/update_carrier', methods=['POST', 'GET'], view_func=carrierView.update_carrier)
 # manager view
 app.add_url_rule('/manager', view_func=managerView.manager_view)
 app.add_url_rule('/insert_manager', methods=['POST', 'GET'], view_func=managerView.get_insert_manager)
@@ -44,5 +48,12 @@ app.add_url_rule('/insert_service', view_func=serviceView.insert_service, method
 # invoice
 app.add_url_rule('/invoice', view_func=invoiceView.invoice_view)
 app.add_url_rule('/insert_invoice', view_func=invoiceView.insert_invoice, methods=['POST', 'GET'])
+
+
+#select
+app.add_url_rule('/select_all_emp',view_func=selectView.all_emp)
+app.add_url_rule('/select_today_invoice',view_func=selectView.today)
+
+
 if __name__ == '__main__':
     app.run()

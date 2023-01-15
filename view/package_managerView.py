@@ -9,9 +9,10 @@ def package_manager_view():
 def insert_packager_manager():
     if request.method == 'POST':
         pack_in_day = request.form['PIND']
+        PAID = request.form['PAID']
         try:
             connect = get_db_connection()
-            connect.execute("""INSERT INTO package_manager (package_in_day) VALUES (?)""", (pack_in_day))
+            connect.execute("""INSERT INTO package_manager (package_in_daym,PAID) VALUES (?,?)""", (pack_in_day,PAID))
             connect.commit()
             connect.close()
             msg = "Package manager Record successfully added"

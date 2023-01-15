@@ -5,19 +5,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Service INFO</title>
+    <title>delete carrier</title>
 </head>
 <body>
-<form action="{{ url_for('insert_service') }}" method="post">
-    service type <br>
-    <input type="range" min="1" max="4"  name="type"> <br> <br>
-    id who register <br>
-    <input type="text" name="ship_id"><br><br>
+<form action="{{ url_for('delete_carrier') }}" method="post">
+
+    PCID <br>
+    <input type="text" name="PCID"> <br><br>
 
     <input type="submit" name="submit">
 
-
 </form>
-
 </body>
 </html>

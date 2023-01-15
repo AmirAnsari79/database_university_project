@@ -11,10 +11,11 @@ def get_insert_manager():
         locate = request.form['location']
         history = request.form['history']
         branch_id = request.form['branch_id']
+        PMID = request.form['PMID']
         try:
             connect = get_db_connection()
-            connect.execute("""INSERT INTO manager (location,hist_manage,branch_id) VALUES (?,?,?)""",
-                            (locate, history, branch_id))
+            connect.execute("""INSERT INTO manager (location,hist_manage,branch_id) VALUES (?,?,?,?)""",
+                            (locate, history, branch_id,PMID))
             connect.commit()
             connect.close()
             msg = 'manager Record successfully added'

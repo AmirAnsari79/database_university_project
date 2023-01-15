@@ -16,7 +16,7 @@ def insert_invoice():
         try:
             connect = get_db_connection()
             connect.execute(
-                """INSERT INTO invoice (ID,_date,amount,addr,service_type,CID,POID) VALUES ((SELECT IFNULL(MAX(ID), 0) + 1 FROM invoice),time('now'),?,?,?,?,?)""",
+                """INSERT INTO invoice (_date,amount,addr,service_type,CID,POID) VALUES (time('now'),?,?,?,?,?)""",
                 (amount, addr, service_type, CID, POID))
             connect.commit()
             connect.close()

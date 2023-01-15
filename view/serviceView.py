@@ -9,10 +9,11 @@ def service_view():
 def insert_service():
     if request.method == 'POST':
         service_type = request.form['type']
+        shipment_id = request.form['ship_id']
         try:
             pass
             connect = get_db_connection()
-            connect.execute("""INSERT INTO service (service_type) VALUES (?)""", (service_type))
+            connect.execute("""INSERT INTO service (SHIPMENT_ID,service_type) VALUES (?,?)""", (shipment_id,service_type))
             connect.commit()
             connect.close()
             msg='servie su'
