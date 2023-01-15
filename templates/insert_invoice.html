@@ -8,13 +8,20 @@
     <title>Invoice INFO</title>
 </head>
 <body>
-<form action="{{ url_for('insert_invoice') }}" method="post">
+<form action="{{ url_for('insert_invoice') }}" method="post" style="padding-left: 70px; padding-top: 70px">
     amount <br>
     <input type="tel" name="amount"> <br> <br>
     addr <br>
     <textarea name="addr"></textarea> <br> <br>
     service_type <br>
     <input type="text" name="type"> <br> <br>
+
+    customer id <br>
+    <input type="text" name="CID"> <br> <br>
+
+
+    operator id <br>
+    <input type="text" name="POID"> <br><br>
     <input type="submit">
 
 

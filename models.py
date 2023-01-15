@@ -45,6 +45,7 @@ class Model:
             CID INTEGER NOT NULL,
             POID INTEGER NOT NULL ,
             service_type TEXT NOT NULL ,
+            PRIMARY KEY (ID,CID,POID),
             FOREIGN KEY (CID) 
                 REFERENCES customer (CID)
                 ON DELETE CASCADE 
@@ -52,8 +53,7 @@ class Model:
             FOREIGN KEY (POID)
                 REFERENCES operator(POID)
                 ON DELETE CASCADE 
-                ON UPDATE CASCADE,
-            PRIMARY KEY (ID,CID,POID)
+                ON UPDATE CASCADE
             
                 
             );

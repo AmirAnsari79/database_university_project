@@ -11,11 +11,13 @@ def insert_invoice():
         amount = request.form['amount']
         addr = request.form['addr']
         service_type = request.form['type']
+        CID = request.form['CID']
+        POID = request.form['POID']
         try:
             connect = get_db_connection()
             connect.execute(
-                """INSERT INTO invoice (ID,_date,amount,addr,service_type) VALUES ((SELECT IFNULL(MAX(ID), 0) + 1 FROM invoice),time('now'),?,?,?)""",
-                (amount, addr, service_type))
+                """INSERT INTO invoice (ID,_date,amount,addr,service_type,CID,POID) VALUES ((SELECT IFNULL(MAX(ID), 0) + 1 FROM invoice),time('now'),?,?,?,?,?)""",
+                (amount, addr, service_type, CID, POID))
             connect.commit()
             connect.close()
             msg = 'ssss'

@@ -8,6 +8,7 @@ def carrier_view():
 def get_insert_carrier():
     if request.method == 'POST':
         license_number = request.form['lnumber']
+        PID = request.form['PID']
         try:
             connect = get_db_connection()
             connect.execute("""INSERT INTO carrier (license_number) VALUES (?)""", (license_number))
